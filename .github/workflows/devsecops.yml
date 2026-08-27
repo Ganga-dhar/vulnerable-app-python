@@ -191,6 +191,7 @@ jobs:
       - SCA-pip-audit
       - Secret-Scan-Gitleaks
       - test
+      - docker
       - Container-Security-Trivy
 
     if: github.ref == 'refs/heads/main'
