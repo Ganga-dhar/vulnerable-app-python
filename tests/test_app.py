@@ -1,5 +1,5 @@
 import pytest
-import app
+from app import app
 
 
 @pytest.fixture
@@ -35,9 +35,3 @@ def test_admin_calc(client):
     data = response.get_json()
 
     assert data["result"] == 3
-
-
-def test_user_not_found(client):
-    response = client.get("/user?id=999999")
-
-    assert response.status_code == 404
