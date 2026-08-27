@@ -171,7 +171,7 @@ jobs:
   aws-configure:
     name: Configure AWS credentials
     runs-on: ubuntu-latest
-    environemnt: DEV
+    environment: DEV
     steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
