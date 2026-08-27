@@ -36,19 +36,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
 
-
-  # =========================================================
-  # 2. SonarCloud Quality Gate
-  # =========================================================
-
-  SAST-SonarCloud-Quality-Gate:
-    name: SAST - SonarCloud Quality Gate
-    runs-on: ubuntu-latest
-    needs:
-      - SAST-SonarCloud
-
-    steps:
-
       - name: SonarCloud Quality Gate
         uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
         timeout-minutes: 5
