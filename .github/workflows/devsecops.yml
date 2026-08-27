@@ -18,27 +18,27 @@ jobs:
   # 1. SAST
   # -----------------------------------
 
-  sast:
+  SAST-SonarQube:
     name: SAST - SonarQube
     runs-on: ubuntu-latest
 
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6
+        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_HOST_URL: https://sonarcloud.io
 
 
   # -----------------------------------
   # 2. SCA
   # -----------------------------------
 
-  sca:
+  SCA-pip-audit:
     name: SCA - pip-audit
     runs-on: ubuntu-latest
 
@@ -138,7 +138,7 @@ jobs:
   # 6. Container Security
   # -----------------------------------
 
-  trivy:
+  Container-Security-Trivy:
     name: Container Scan - Trivy
     runs-on: ubuntu-latest
 
@@ -184,9 +184,9 @@ jobs:
     runs-on: ubuntu-latest
 
     needs:
-      - sast
-      - sca
-      - trivy
+      - SAST-SonarQube
+      - SCA-pip-audit
+      - Container-Security-Trivy
 
     if: github.ref == 'refs/heads/main'
 
