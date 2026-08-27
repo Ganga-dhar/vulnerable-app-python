@@ -187,7 +187,7 @@ jobs:
     environment: DEV
 
     needs:
-      - SAST-SonarCloud-Quality-Gate
+      - SAST-SonarCloud
       - SCA-pip-audit
       - Secret-Scan-Gitleaks
       - test
